@@ -6,19 +6,19 @@ import ru.bmstu.iu3.menu.Dish;
 
 public class Order implements OrderManager {
 
-    Map<Dish, Integer> orderedDishes = new HashMap<Dish, Integer>();
-    int price = 0;
+    private final Map<Dish, Integer> orderedDishes = new HashMap<Dish, Integer>();
     
     @Override
     public void showBill() {
-        price = 0;
-        for (Dish dish : orderedDishes.keySet()) {
-            int quantity = orderedDishes.get(dish);
+        int totalPrice = 0;
+        for (Map.Entry<Dish, Integer> entry : orderedDishes.entrySet()) {
+            Dish dish = entry.getKey();
+            int quantity = entry.getValue();
             int dishTotal = dish.getPrice() * quantity;
             System.out.println(dish.getName() + " x " + quantity + " = " + dishTotal + " руб.");
-            price +=dishTotal;
+            totalPrice += dishTotal;
         }
-        System.out.println("Итоговая стоимость: " + price + " руб.");
+        System.out.println("Итоговая стоимость: " + totalPrice + " руб.");
         System.out.println("-=--------------------------------------=-");
     }
 
@@ -36,7 +36,19 @@ public class Order implements OrderManager {
         }
     }
 
+    @Override
     public int getPrice() {
-        return price;
+        int totalPrice = 0;
+        for (Map.Entry<Dish, Integer> entry : orderedDishes.entrySet()) {
+            Dish dish = entry.getKey();
+            int quantity = entry.getValue();
+            totalPrice += dish.getPrice() * quantity;
+        }
+        return totalPrice;
     }   
+
+    @Override
+    public void clear() {
+        orderedDishes.clear();
+    }
 }

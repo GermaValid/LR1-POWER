@@ -34,4 +34,8 @@ public class OrderService {
     public void showBill() {
         order.showBill();
     }
+
+    public void clearOrder() {
+        order.clear();
+    }
 }

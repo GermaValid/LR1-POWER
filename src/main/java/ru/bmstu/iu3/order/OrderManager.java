@@ -6,4 +6,5 @@ public interface OrderManager {
     void addDish(Dish dish);
     void removeDish(Dish dish);
     int getPrice();
+    void clear();
 }

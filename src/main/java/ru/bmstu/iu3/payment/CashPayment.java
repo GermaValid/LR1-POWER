@@ -1,5 +1,6 @@
 package ru.bmstu.iu3.payment;
 
+import ru.bmstu.iu3.exception.PaymentException;
 import ru.bmstu.iu3.service.InputReader;
 
 public class CashPayment implements Payment {
@@ -10,7 +11,7 @@ public class CashPayment implements Payment {
                 System.out.println("Оплата наличными прошла успешно.");
                 System.out.println("Сдача: " + (cash - amount));
             } else {
-                throw new IllegalArgumentException("Недостаточно средств для оплаты.");
+                throw new PaymentException("Недостаточно наличных средств для оплаты.");
             }
         }
     
@@ -19,3 +20,4 @@ public class CashPayment implements Payment {
         System.out.println("Оплата наличными.");
     }
 }
+

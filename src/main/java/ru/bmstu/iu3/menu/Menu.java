@@ -1,4 +1,7 @@
 package ru.bmstu.iu3.menu;
+
+import ru.bmstu.iu3.exception.ValidationException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +22,16 @@ public class Menu implements MenuRepository {
     @Override
     public void showMenu() 
     {
-        for (Dish dish : menuItems) {
-            System.out.println(dish.getName() + " --------------------------------- " + dish.getPrice() + " руб.\n Описание: " + dish.getDescription());
+        for (int i = 0; i < menuItems.size(); i++) {
+            Dish dish = menuItems.get(i);
+            System.out.println((i + 1) + ". " + dish.getName() + " --------------------------------- " + dish.getPrice() + " руб.\n Описание: " + dish.getDescription());
         }
     }
     @Override
     public Dish getDishByNumber(int number) {
-        try{
-        return menuItems.get(number - 1);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Неверный номер блюда. Пожалуйста, выберите номер от 1 до " + menuItems.size() + ".");
-            return null;
+        if (number < 1 || number > menuItems.size()) {
+            throw new ValidationException("Неверный номер блюда. Пожалуйста, выберите номер от 1 до " + menuItems.size() + ".");
         }
+        return menuItems.get(number - 1);
     }
 }

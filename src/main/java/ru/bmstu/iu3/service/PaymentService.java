@@ -1,8 +1,9 @@
 package ru.bmstu.iu3.service;
 
-import java.util.List;
+import ru.bmstu.iu3.exception.PaymentException;
+import ru.bmstu.iu3.payment.Payment;
 
-import ru.bmstu.iu3.payment.*;
+import java.util.List;
 
 public class PaymentService {
     private final List<Payment> paiments;
@@ -18,14 +19,16 @@ public class PaymentService {
     }
 
     public void payService(int amount) {
-        for (Payment paiment : paiments) {
-            paiment.description();
+        for (int i = 0; i < paiments.size(); i++) {
+            System.out.print((i + 1) + ". ");
+            paiments.get(i).description();
         }
         int choice = reader.readInt("Выберите способ оплаты (введите номер):");
         if (choice >= 1 && choice <= paiments.size()) {
             paiments.get(choice - 1).pay(amount, reader);
         } else {
-            throw new IllegalArgumentException("Неверный выбор. Пожалуйста, выберите номер от 1 до " + paiments.size() + ".");
+            throw new PaymentException("Неверный выбор. Пожалуйста, выберите номер от 1 до " + paiments.size() + ".");
         }
     }
 }
+
