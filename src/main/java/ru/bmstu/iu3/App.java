@@ -4,6 +4,7 @@ import ru.bmstu.iu3.order.Order;
 import ru.bmstu.iu3.payment.CardPayment;
 import ru.bmstu.iu3.payment.CashPayment;
 import ru.bmstu.iu3.payment.Payment;
+import ru.bmstu.iu3.service.BillPresenter;
 import ru.bmstu.iu3.service.CafeService;
 import ru.bmstu.iu3.service.MenuService;
 import ru.bmstu.iu3.service.OrderService;
@@ -27,7 +28,7 @@ public class App
             paiments.add(new CardPayment());
             paiments.add(new CashPayment());
             MenuService menuService = new MenuService();
-            OrderService orderService = new OrderService(order, menuService.getMenu(),  reader);
+            OrderService orderService = new OrderService(order, menuService.getMenu(), reader, new BillPresenter());
             PaymentService paimentService = new PaymentService(paiments, reader);
             CafeService cafeService = new CafeService(menuService, orderService, paimentService, reader);
             cafeService.run();

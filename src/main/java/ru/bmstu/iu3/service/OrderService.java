@@ -7,11 +7,13 @@ public class OrderService {
     private final OrderManager order;
     private final MenuRepository menu;
     private final InputReader reader;
-    
-    public OrderService(OrderManager order, MenuRepository menu, InputReader reader) {
+    private final BillPresenter billPresenter;
+
+    public OrderService(OrderManager order, MenuRepository menu, InputReader reader, BillPresenter billPresenter) {
         this.order = order;
         this.menu = menu;
         this.reader = reader;
+        this.billPresenter = billPresenter;
     }
 
     public void makeOrder() {
@@ -32,7 +34,7 @@ public class OrderService {
     }
 
     public void showBill() {
-        order.showBill();
+        billPresenter.present(order);
     }
 
     public void clearOrder() {

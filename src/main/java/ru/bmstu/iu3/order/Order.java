@@ -1,5 +1,6 @@
 package ru.bmstu.iu3.order;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import ru.bmstu.iu3.menu.Dish;
@@ -7,21 +8,11 @@ import ru.bmstu.iu3.menu.Dish;
 public class Order implements OrderManager {
 
     private final Map<Dish, Integer> orderedDishes = new HashMap<Dish, Integer>();
-    
-    @Override
-    public void showBill() {
-        int totalPrice = 0;
-        for (Map.Entry<Dish, Integer> entry : orderedDishes.entrySet()) {
-            Dish dish = entry.getKey();
-            int quantity = entry.getValue();
-            int dishTotal = dish.getPrice() * quantity;
-            System.out.println(dish.getName() + " x " + quantity + " = " + dishTotal + " руб.");
-            totalPrice += dishTotal;
-        }
-        System.out.println("Итоговая стоимость: " + totalPrice + " руб.");
-        System.out.println("-=--------------------------------------=-");
-    }
 
+    @Override
+    public Map<Dish, Integer> getOrderedDishes() {
+        return Collections.unmodifiableMap(new HashMap<>(orderedDishes));
+    }
 
     @Override
     public void addDish(Dish dish) {
