@@ -2,7 +2,7 @@ package ru.bmstu.iu3.service.action;
 
 import ru.bmstu.iu3.service.OrderService;
 
-public class MakeOrderAction implements Action {
+public class MakeOrderAction implements Action { // command
     private final OrderService orderService;
 
     public MakeOrderAction(OrderService orderService) {

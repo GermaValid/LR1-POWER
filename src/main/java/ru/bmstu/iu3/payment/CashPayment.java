@@ -3,7 +3,7 @@ package ru.bmstu.iu3.payment;
 import ru.bmstu.iu3.exception.PaymentException;
 import ru.bmstu.iu3.service.InputReader;
 
-public class CashPayment implements Payment {
+public class CashPayment implements Payment { // strategy
         @Override
         public void pay(int amount, InputReader reader) {
             int cash = reader.readInt("Операция оплаты наличными. Введите сумму для оплаты: " + amount);

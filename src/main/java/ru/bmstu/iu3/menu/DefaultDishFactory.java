@@ -2,7 +2,7 @@ package ru.bmstu.iu3.menu;
 
 import ru.bmstu.iu3.exception.ValidationException;
 
-public class DefaultDishFactory implements DishFactory {
+public class DefaultDishFactory implements DishFactory { // factory
 
     @Override
     public Dish create(String name, int price, String description) {
@@ -13,6 +13,6 @@ public class DefaultDishFactory implements DishFactory {
             throw new ValidationException("Стоимость не может быть отрицательной.");
         }
         String desc = description == null ? "" : description;
-        return new Dish(name.trim(), price, desc);
+        return new SimpleDish(name.trim(), price, desc);
     }
 }

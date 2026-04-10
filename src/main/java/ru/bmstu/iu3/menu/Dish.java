@@ -1,25 +1,13 @@
 package ru.bmstu.iu3.menu;
 
-public class Dish {
-    private final String name;
-    private final int price;
-    private final String description;
-    
-    public Dish(String name, int price, String description) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-    }
+/**
+ * Блюдо в меню и заказе: абстракция для зависимостей по DIP (заказ, чек, репозиторий).
+ */
+public interface Dish {
 
-    public String getName() {
-        return name;
-    }
+    String getName();
 
-    public int getPrice() {
-        return price;
-    }
+    int getPrice();
 
-    public String getDescription() {
-        return description;
-    }
+    String getDescription();
 }

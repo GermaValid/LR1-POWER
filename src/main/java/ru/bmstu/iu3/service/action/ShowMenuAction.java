@@ -2,7 +2,7 @@ package ru.bmstu.iu3.service.action;
 
 import ru.bmstu.iu3.service.MenuService;
 
-public class ShowMenuAction implements Action {
+public class ShowMenuAction implements Action { // command
     private final MenuService menuService;
 
     public ShowMenuAction(MenuService menuService) {

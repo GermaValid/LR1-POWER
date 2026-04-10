@@ -3,7 +3,7 @@ package ru.bmstu.iu3.payment;
 import ru.bmstu.iu3.exception.PaymentException;
 import ru.bmstu.iu3.service.InputReader;
 
-public class CardPayment implements Payment    {
+public class CardPayment implements Payment { // strategy
     int cardMoney = 10000; // Предположим, что на карте всегда есть 10к (кредитка Сбер-а)
 
     @Override

@@ -7,7 +7,7 @@ import java.util.List;
  * Отложенная пакетная фиксация новых блюд в меню: накапливаем через {@link #registerNew},
  * затем одним {@link #commit()} отправляем в репозиторий или {@link #rollback()} сбрасываем.
  */
-public class MenuUnitOfWork {
+public class MenuUnitOfWork { // unit of work
 
     private final MenuRepository repository;
     private final DishFactory dishFactory;

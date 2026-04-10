@@ -3,7 +3,7 @@ package ru.bmstu.iu3.service.action;
 import ru.bmstu.iu3.service.OrderService;
 import ru.bmstu.iu3.service.PaymentService;
 
-public class PayOrderAction implements Action {
+public class PayOrderAction implements Action { // command
     private final OrderService orderService;
     private final PaymentService paymentService;
 
